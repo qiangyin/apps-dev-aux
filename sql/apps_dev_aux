@@ -1,0 +1,160 @@
+/*
+SQLyog v10.2 
+MySQL - 5.6.31 : Database - apps_dev_aux
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`apps_dev_aux` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+
+USE `apps_dev_aux`;
+
+/*Table structure for table `data_source` */
+
+DROP TABLE IF EXISTS `data_source`;
+
+CREATE TABLE `data_source` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增长Id',
+  `type` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT '数据库类型',
+  `version` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT '版本',
+  `size` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT '大小(M)',
+  `u_time` datetime NOT NULL COMMENT '更新时间',
+  `s_env` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT '支持环境',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `data_source` */
+
+/*Table structure for table `doc` */
+
+DROP TABLE IF EXISTS `doc`;
+
+CREATE TABLE `doc` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `title` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT '标题',
+  `user_id` int(11) NOT NULL COMMENT '上传人id',
+  `size` int(11) NOT NULL COMMENT '大小（KB）',
+  `c_time` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `doc` */
+
+/*Table structure for table `extension` */
+
+DROP TABLE IF EXISTS `extension`;
+
+CREATE TABLE `extension` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `type` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '类型',
+  `path` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '路径',
+  `name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `extension` */
+
+/*Table structure for table `lang` */
+
+DROP TABLE IF EXISTS `lang`;
+
+CREATE TABLE `lang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `type` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT '类型',
+  `intro` varchar(512) COLLATE utf8_unicode_ci NOT NULL COMMENT '简介',
+  `version` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT '版本',
+  `size` int(11) NOT NULL COMMENT '大小（M）',
+  `u_time` datetime NOT NULL COMMENT '更新时间',
+  `s_env` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT '运行环境',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `lang` */
+
+/*Table structure for table `msg` */
+
+DROP TABLE IF EXISTS `msg`;
+
+CREATE TABLE `msg` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '序号',
+  `title` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT '标题',
+  `status` int(11) NOT NULL COMMENT '状态',
+  `from` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT '来源',
+  `role_id` int(11) NOT NULL COMMENT '角色',
+  `c_time` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `msg` */
+
+/*Table structure for table `open_source` */
+
+DROP TABLE IF EXISTS `open_source`;
+
+CREATE TABLE `open_source` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `title` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT '标题',
+  `content` varchar(1024) COLLATE utf8_unicode_ci NOT NULL COMMENT '内容',
+  `url` varchar(256) COLLATE utf8_unicode_ci NOT NULL COMMENT '地址',
+  `c_time` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `open_source` */
+
+/*Table structure for table `role` */
+
+DROP TABLE IF EXISTS `role`;
+
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '角色id',
+  `role_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '角色名称',
+  `c_time` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `role` */
+
+/*Table structure for table `source` */
+
+DROP TABLE IF EXISTS `source`;
+
+CREATE TABLE `source` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `role_id` int(11) NOT NULL COMMENT '角色id',
+  `urls` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '资源地址',
+  `c_time` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `source` */
+
+/*Table structure for table `user` */
+
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  `user_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户名',
+  `password` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '密码',
+  `role_id` int(11) NOT NULL COMMENT '角色id',
+  `c_time` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `user` */
+
+insert  into `user`(`id`,`user_name`,`password`,`role_id`,`c_time`) values (1,'张三','123456',1,'2018-04-18 17:05:28');
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

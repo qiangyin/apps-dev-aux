@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>计算机小程序开发辅助平台</title>
+    <!--Bootstrap-->
+    <link th:href="@{Bootstrap/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link th:href="@{Bootstrap/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/>
+    <!--[if IE 7]>
+    <link href="/Content/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet"/>
+    <![endif]-->
+    <link th:href="@{Bootstrap/sidebar-menu/sidebar-menu.css}" rel="stylesheet"/>
+    <link th:href="@{Bootstrap/ace/css/ace-rtl.min.css}" rel="stylesheet"/>
+    <link th:href="@{Bootstrap/ace/css/ace-skins.min.css}" rel="stylesheet"/>
+    <link th:href="@{Bootstrap/toastr/toastr.min.css}" rel="stylesheet"/>
+
+    <script th:src="@{Bootstrap/jquery-1.9.1.min.js}"></script>
+    <script th:src="@{Bootstrap/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{Bootstrap/sidebar-menu/sidebar-menu.js}"></script>
+    <script th:src="@{Bootstrap/bootstrap/js/bootstrap-tab.js}"></script>
+    <!--[if lt IE 9]>
+    <script src="/Scripts/html5shiv.js"></script>
+    <script src="/Scripts/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        body {
+            font-size: 12px;
+        }
+
+        .nav > li > a {
+            padding: 5px 10px;
+        }
+
+        .tab-content {
+            padding-top: 3px;
+        }
+    </style>
+</head>
+<body>
+<div class="panel panel-default">
+    <!-- Table -->
+    <table class="table">
+        <tr>
+            <th>类型</th>
+            <th>简介</th>
+            <th>版本</th>
+            <th>大小</th>
+            <th>更新时间</th>
+            <th>运行环境</th>
+        </tr>
+        <tr>
+            <td class="active">Java</td>
+            <td class="active col-md-6">Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。Java可运行于多个平台，如Windows, Mac
+                OS，及其他多种UNIX版本的系统。
+            </td>
+            <td class="active">8.0.1610.12</td>
+            <td class="active">61.4M</td>
+            <td class="active">2017-10-05</td>
+            <td class="active">WinXP/Win2003/Vista/Win7/Win8</td>
+            <td class="active">
+                <button class="btn btn-sm btn-info" type="button">下载</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<script th:src="@{Bootstrap/ace/js/ace-extra.min.js}"></script>
+<script th:src="@{Bootstrap/ace/js/ace.min.js}"></script>
+</body>
+</html>
